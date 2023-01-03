@@ -138,70 +138,69 @@ local function editFile(prompt_bufnr)
   vim.api.nvim_command(":tabnew " .. selected.path)
 end
 
-local opts = {
-  prompt_title = "Air Support",
-  results_title = "Particles",
-  finder = finders.new_table {
-    results = createParticleDictionary(),
-    entry_maker = function(entry)
-      local displayer = entry_display.create {
-        separator = "|",
-        items = {
-          { width = 0.2 },
-          { width = 0.25 },
-          { width = 0.15 },
-          { remaining = true }
-        }
-      }
-
-      local function make_display(ent)
-        return displayer {
-          { ent.name, "particleName" },
-          { ent.command, "particleCommand" },
-          { ent.shortcut, "particleShortcut" },
-          { ent.shortExp, "particleExplanation" },
-        }
-      end
-
-      return {
-        value = entry,
-        display = make_display,
-        ordinal = string.format("%s %s %s %s", entry[1], entry[2], entry[3], entry[4]),
-        name = entry[1],
-        command = entry[2],
-        shortcut = entry[3],
-        shortExp = entry[4],
-        path = entry[5]
-      }
-    end
-  },
-  sorter = sorters.get_fzy_sorter({}),
-  previewer = previewers.new_termopen_previewer({
-    get_command = function(entry, _)
-      return printTypeCommand(entry.path)
-    end,
-    title = "Definition"
-  }),
-
-  attach_mappings = function(_, map)
-    map("i", "<CR>", enter)
-    map("i", airSupportConfig.telescope_new_file_shortcut , newFile)
-    map("i", airSupportConfig.telescope_delete_file_shortcut, deleteFile)
-    map("i", airSupportConfig.telescope_edit_file_shortcut, editFile)
-    map("n", "<CR>", enter)
-    map("n", airSupportConfig.telescope_new_file_shortcut , newFile)
-    map("n", airSupportConfig.telescope_delete_file_shortcut, deleteFile)
-    map("n", airSupportConfig.telescope_edit_file_shortcut, editFile)
-    return true
-  end
-}
-
-local airSupportPicker = pickers.new(style, opts)
 
 return require("telescope").register_extension {
   exports = {
     AirSupport = function(opts)
-      airSupportPicker:find()
+      local inner_opts = {
+        prompt_title = "Air Support",
+        results_title = "Particles",
+        finder = finders.new_table {
+          results = createParticleDictionary(),
+          entry_maker = function(entry)
+            local displayer = entry_display.create {
+              separator = "|",
+              items = {
+                { width = 0.2 },
+                { width = 0.25 },
+                { width = 0.15 },
+                { remaining = true }
+              }
+            }
+
+            local function make_display(ent)
+              return displayer {
+                { ent.name, "particleName" },
+                { ent.command, "particleCommand" },
+                { ent.shortcut, "particleShortcut" },
+                { ent.shortExp, "particleExplanation" },
+              }
+            end
+
+            return {
+              value = entry,
+              display = make_display,
+              ordinal = string.format("%s %s %s %s", entry[1], entry[2], entry[3], entry[4]),
+              name = entry[1],
+              command = entry[2],
+              shortcut = entry[3],
+              shortExp = entry[4],
+              path = entry[5]
+            }
+          end
+        },
+        sorter = sorters.get_fzy_sorter({}),
+        previewer = previewers.new_termopen_previewer({
+          get_command = function(entry, _)
+            return printTypeCommand(entry.path)
+          end,
+          title = "Definition"
+        }),
+
+        attach_mappings = function(_, map)
+          map("i", "<CR>", enter)
+          map("i", airSupportConfig.telescope_new_file_shortcut , newFile)
+          map("i", airSupportConfig.telescope_delete_file_shortcut, deleteFile)
+          map("i", airSupportConfig.telescope_edit_file_shortcut, editFile)
+          map("n", "<CR>", enter)
+          map("n", airSupportConfig.telescope_new_file_shortcut , newFile)
+          map("n", airSupportConfig.telescope_delete_file_shortcut, deleteFile)
+          map("n", airSupportConfig.telescope_edit_file_shortcut, editFile)
+          return true
+        end
+      }
+
+      pickers.new(style, inner_opts):find()
     end
   }
 }
