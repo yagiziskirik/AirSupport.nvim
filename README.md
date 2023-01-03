@@ -4,7 +4,7 @@ A NeoVim addon which helps you to write your own shortcut reminders and forget t
 
 > Note: It is not an addon to _create_ shortcuts, it is used for creating shortcut _reminders_ for accessing them later.
 
-![usage gif](https://i.ibb.co/89s4HLs/record.gif)
+![usage gif](https://i.ibb.co/dM0B5nL/recording.gif)
 
 ## Table of Contents
 
@@ -42,7 +42,6 @@ Telescope is required for AirSupport to work, please bear in mind.
 ```viml
 Plug 'yagiziskirik/AirSupport.nvim'
 
-Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 ```
@@ -51,7 +50,6 @@ Plug 'nvim-telescope/telescope.nvim'
 ```viml
 call dein#add('yagiziskirik/AirSupport.nvim')
 
-call dein#add('nvim-lua/popup.nvim')
 call dein#add('nvim-lua/plenary.nvim')
 call dein#add('nvim-telescope/telescope.nvim')
 ```
@@ -63,7 +61,6 @@ use {
 
   requires = {
     {'nvim-telescope/telescope.nvim'},
-    {'nvim-lua/popup.nvim'},
     {'nvim-lua/plenary.nvim'},
   }
 }
