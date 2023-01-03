@@ -1,8 +1,8 @@
 # AirSupport.nvim
 
-A NeoVim addon which helps you to write your own shortcuts and forget it. If you happened to have a lots of shortcuts and commands that you want to use and keep forgetting it, this would be a useful addon to you. AirSupport uses [Telescope](https://github.com/nvim-telescope/telescope.nvim) to show and execute the commands that you specify.
+A NeoVim addon which helps you to write your own shortcut reminders and forget them. If you happened to have a lots of shortcuts and commands that you want to use and keep forgetting it, this would be a useful addon to you. AirSupport uses [Telescope](https://github.com/nvim-telescope/telescope.nvim) to show and execute the commands that you specify.
 
-> Note: It is not an addon to _create_ shortcuts, it is used for creating shortcut collections for accessing them later.
+> Note: It is not an addon to _create_ shortcuts, it is used for creating shortcut _reminders_ for accessing them later.
 
 ![insert_gif_here]()
 
