@@ -4,7 +4,7 @@ A NeoVim addon which helps you to write your own shortcut reminders and forget t
 
 > Note: It is not an addon to _create_ shortcuts, it is used for creating shortcut _reminders_ for accessing them later.
 
-![insert_gif_here]()
+![usage gif](https://i.ibb.co/89s4HLs/record.gif)
 
 ## Table of Contents
 
