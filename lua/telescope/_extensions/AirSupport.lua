@@ -17,10 +17,10 @@ local style = {
   },
 }
 
-vim.highlight.link("particleName", "String")
-vim.highlight.link("particleCommand", "Keyword")
-vim.highlight.link("particleShortcut", "Statement")
-vim.highlight.link("particleExplanation", "Include")
+vim.api.nvim_set_hl(0, "particleName", { link="String" })
+vim.api.nvim_set_hl(0, "particleCommand", { link="Keyword" })
+vim.api.nvim_set_hl(0, "particleShortcut", { link="Statement" })
+vim.api.nvim_set_hl(0, "particleExplanation", { link="Include" })
 
 local function enter(prompt_bufnr)
   local selected = action_state.get_selected_entry()
